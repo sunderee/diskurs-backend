@@ -15,4 +15,9 @@ describe('UrlService', () => {
     it('should be defined', () => {
         expect(service).toBeDefined();
     });
+
+    it('should construct URL from given code', () => {
+        const url = service.constructEndpoint('serbian', 'jugoslavija');
+        expect(url).toEqual('https://www.kontekst.io/srpski/jugoslavija');
+    });
 });
