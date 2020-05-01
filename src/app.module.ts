@@ -1,7 +1,7 @@
 import { Module } from '@nestjs/common';
-import { UrlModule } from './url/url.module';
+import { KontekstModule } from './kontekst/kontekst.module';
 
 @Module({
-    imports: [UrlModule]
+    imports: [KontekstModule]
 })
 export class AppModule {}
