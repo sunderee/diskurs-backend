@@ -1,0 +1,26 @@
+# IDEs
+.idea
+.vscode
+
+# Dependencies
+node_modules
+package-lock.json
+
+# Misc
+.DS_Store
+lerna-debug.log
+npm-debug.log
+yarn-error.log
+/**/npm-debug.log
+/packages/**/.npmignore
+/packages/**/LICENSE
+packages/**/*.d.ts
+packages/**/*.js
+
+# Tests
+/test
+/coverage
+/.nyc_output
+
+# Compiled code
+/dist

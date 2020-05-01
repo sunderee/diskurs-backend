@@ -1,0 +1,75 @@
+{
+    "name": "diskurs-backend",
+    "version": "0.0.1",
+    "description": "Backend application exposing RESTful API based on kontekst.io for Diskurs suite",
+    "scripts": {
+        "prebuild": "rimraf dist",
+        "build": "npm run lint && npm run format && nest build",
+        "format": "prettier --write \"src/**/*.ts\"",
+        "lint": "eslint '{src,apps,libs,test}/**/*.ts' --fix",
+        "start": "nest start",
+        "start:dev": "nest start --watch",
+        "start:prod": "node dist/main",
+        "test": "jest",
+        "test:cov": "jest --coverage",
+        "test:e2e": "jest --config ./e2e/jest-e2e.json"
+    },
+    "author": {
+        "name": "Peter Aleksander Bizjak",
+        "email": "peteralex.developer@gmail.com"
+    },
+    "license": "MIT",
+    "dependencies": {
+        "@nestjs/common": "^7.0.9",
+        "@nestjs/core": "^7.0.9",
+        "@nestjs/platform-express": "^7.0.9",
+        "class-transformer": "^0.2.3",
+        "class-validator": "^0.12.2",
+        "reflect-metadata": "^0.1.13",
+        "rxjs": "^6.5.5"
+    },
+    "devDependencies": {
+        "@nestjs/testing": "^7.0.9",
+        "@types/jest": "^25.2.1",
+        "@types/node": "^13.13.4",
+        "@typescript-eslint/eslint-plugin": "^2.30.0",
+        "@typescript-eslint/parser": "^2.30.0",
+        "eslint": "^6.8.0",
+        "husky": "^4.2.5",
+        "jest": "^25.4.0",
+        "lint-staged": "^10.1.7",
+        "prettier": "^2.0.5",
+        "ts-jest": "^25.4.0",
+        "ts-node": "^8.9.1",
+        "typescript": "^3.8.3"
+    },
+    "jest": {
+        "moduleFileExtensions": [
+            "js",
+            "json",
+            "ts"
+        ],
+        "rootDir": "src",
+        "testRegex": ".spec.ts$",
+        "transform": {
+            "^.+\\.(t|j)s$": "ts-jest"
+        },
+        "collectCoverageFrom": [
+            "**/*.(t|j)s"
+        ],
+        "coverageDirectory": "../coverage",
+        "testEnvironment": "node"
+    },
+    "husky": {
+        "hooks": {
+            "pre-commit": "lint-staged"
+        }
+    },
+    "lint-staged": {
+        "src/**": [
+            "npm run lint",
+            "npm run format",
+            "git add ."
+        ]
+    }
+}
