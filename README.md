@@ -17,7 +17,7 @@ This is (obviously) a work in progress, so expect more functionalities and updat
 
 ## Usage
 
-Run tests using the following NPM scripts:
+Install dependencies with `npm install`. Run tests using the following NPM scripts:
 
 ```bash
 # Run all unit tests
