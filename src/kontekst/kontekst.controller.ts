@@ -20,4 +20,9 @@ export class KontekstController {
     async scrapeForSerbian(@Query('word') word): Promise<KontekstResponseModel[] | ScrapingErrorModel> {
         return await this.service.scrapeSerbian(word);
     }
+
+    @Get('slovenian/corpus')
+    async scrapeCorpusForSlovenian(@Query('word') word): Promise<any> {
+        return await this.service.scrapeGeneralCorpusSlovenian(word);
+    }
 }
