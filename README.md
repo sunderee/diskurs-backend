@@ -64,7 +64,7 @@ $ curl -X GET http://localhost:3000/konteksts/slovenian?word=jugoslavija
 ["partija","61"],["grčija","61"]]
 ```
 
-### `kontekst/croatian`
+### `kontekst/croatian?word=`
 
 Initiates a scraping of a Croatian thesaurus for a given query parameter `word`. Example with `curl`:
 
@@ -81,7 +81,7 @@ $ curl -X GET 'http://localhost:3000/kontekst/croatian?word=jugoslavija'
 ["europa","61"],["komunistička vlast","61"],["nezavisna država","61"],["sfrj","61"]]
 ```
 
-### `kontekst/serbian`
+### `kontekst/serbian?word=`
 
 Initiates a scraping of a Serbian thesaurus for a given query parameter `word`. Example with `curl`:
 
