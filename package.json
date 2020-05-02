@@ -19,6 +19,9 @@
         "email": "peteralex.developer@gmail.com"
     },
     "license": "MIT",
+    "engines": {
+        "node": "12.16.x"
+    },
     "dependencies": {
         "@nestjs/common": "^7.0.9",
         "@nestjs/core": "^7.0.9",
