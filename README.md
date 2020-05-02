@@ -49,24 +49,51 @@ $ npm run start:prod
 
 ### `kontekst/slovenian?word=`
 
-Initiates a scraping of a Slovenian thesaurus for a given query parameter `word`. Example with `curl`:
+Initiates a scraping of a Slovenian thesaurus for a given query parameter `word`.
 
 ```bash
 $ curl -X GET http://localhost:3000/konteksts/slovenian?word=jugoslavija
 ```
 
+### `kontekst/slovenian/corpus?word=`
+
+Initiates a scraping of a Slovenian thesaurus by checking the usages of the given query parameter `word` from the general
+corpus.
+
+```bash
+$ curl -X GET http://localhost:3000/konteksts/slovenian/corpus?word=jugoslavija
+```
+
 ### `kontekst/croatian?word=`
 
-Initiates a scraping of a Croatian thesaurus for a given query parameter `word`. Example with `curl`:
+Initiates a scraping of a Croatian thesaurus for a given query parameter `word`.
 
 ```bash
 $ curl -X GET 'http://localhost:3000/kontekst/croatian?word=jugoslavija'
 ```
 
+### `kontekst/croatian/corpus?word=`
+
+Initiates a scraping of a Croatian thesaurus by checking the usages of the given query parameter `word` from the general
+corpus.
+
+```bash
+$ curl -X GET http://localhost:3000/konteksts/croatian/corpus?word=jugoslavija
+```
+
 ### `kontekst/serbian?word=`
 
-Initiates a scraping of a Serbian thesaurus for a given query parameter `word`. Example with `curl`:
+Initiates a scraping of a Serbian thesaurus for a given query parameter `word`.
 
 ```bash
 $ curl -X GET 'http://localhost:3000/kontekst/serbian?word=jugoslavija'
+```
+
+### `kontekst/slovenian/corpus?word=`
+
+Initiates a scraping of a Serbian thesaurus by checking the usages of the given query parameter `word` from the general
+corpus.
+
+```bash
+$ curl -X GET http://localhost:3000/konteksts/serbian/corpus?word=jugoslavija
 ```
