@@ -6,25 +6,19 @@ import * as cheerio from 'cheerio';
 export class KontekstService {
     constructor() {}
 
-    async scrapeSlovenian(word: string): Promise<any> {
+    async scrapeSlovenian(word: string): Promise<string[] | string> {
         const finalUrl = this.constructEndpoint('slovenian', word);
-        const html = await this.getHtmlFromUrl(finalUrl);
-        const $: CheerioStatic = cheerio.load(html);
+        return this.scraper(finalUrl);
+    }
 
-        const wordsRegex = new RegExp(/([a-zA-Zđšžćč]+)|(\d{2}(?=\%))/gm);
+    async scrapeCroatian(word: string): Promise<string[] | string> {
+        const finalUrl = this.constructEndpoint('croatian', word);
+        return this.scraper(finalUrl);
+    }
 
-        const divs = $('#results > div > #fromserver').contents().text();
-        const wordsMatch = divs.match(wordsRegex);
-        return wordsMatch != null
-            ? wordsMatch
-                  .filter((value: string) => value !== 'Fran' && value !== 'si')
-                  .reduce((previous: any[], _: string, index: number, array: string[]) => {
-                      if (index % 2 === 0) {
-                          previous.push(array.slice(index, index + 2));
-                      }
-                      return previous;
-                  }, [])
-            : 'Error has occurred';
+    async scrapeSerbian(word: string): Promise<string[] | string> {
+        const finalUrl = this.constructEndpoint('serbian', word);
+        return this.scraper(finalUrl);
     }
 
     private async getHtmlFromUrl(url: string): Promise<string> {
@@ -45,4 +39,26 @@ export class KontekstService {
         };
         return languageCodes[code] || languageCodes.default;
     };
+
+    private async scraper(url: string): Promise<string[] | string> {
+        const html: string[] | string = await this.getHtmlFromUrl(url);
+        const $ = cheerio.load(html);
+
+        const wordsRegex = new RegExp(/([a-zA-Zđšžćč ]+)|(\d{2}(?=\%))/gm);
+
+        const divs = $('#results > div > #fromserver').contents().text();
+        const wordsMatch = divs.match(wordsRegex);
+        return wordsMatch != null
+            ? wordsMatch
+                  .filter((value: string) => value !== 'Fran' && value !== 'si ')
+                  .filter((value: string) => value !== 'lzmk' && value !== 'hr ')
+                  .filter((value: string) => value !== 'Vokabular' && value !== 'org')
+                  .reduce((previous: any[], _: string, index: number, array: string[]) => {
+                      if (index % 2 === 0) {
+                          previous.push(array.slice(index, index + 2));
+                      }
+                      return previous;
+                  }, [])
+            : 'Error has occurred';
+    }
 }
