@@ -1,6 +1,6 @@
 {
     "name": "diskurs-backend",
-    "version": "0.0.1",
+    "version": "0.0.2",
     "description": "Backend application exposing RESTful API based on kontekst.io for Diskurs suite",
     "scripts": {
         "prebuild": "rimraf dist",

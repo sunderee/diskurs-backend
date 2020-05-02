@@ -27,13 +27,22 @@ export class KontekstService {
         return this.generalCorpusSearch(finalUrl);
     }
 
+    async scrapeGeneralCorpusCroatian(word: string): Promise<any> {
+        const finalUrl = this.constructEndpoint('croatian', word);
+        return this.generalCorpusSearch(finalUrl);
+    }
+
+    async scrapeGeneralCorpusSerbian(word: string): Promise<any> {
+        const finalUrl = this.constructEndpoint('serbian', word);
+        return this.generalCorpusSearch(finalUrl);
+    }
+
     private getHtmlFromUrl = async (url: string): Promise<string> => {
         const { data: html } = await axios.get(url);
         return html;
     };
 
-    private constructEndpoint = (language: string, query: string): string =>
-        this.constructLanguageUrl(language) + query;
+    private constructEndpoint = (language: string, query: string): string => this.constructLanguageUrl(language) + query;
 
     private constructLanguageUrl = (code: string): string => {
         const languageCodes = {
@@ -77,17 +86,14 @@ export class KontekstService {
               } as ScrapingErrorModel);
     }
 
-    private async generalCorpusSearch(url: string) {
+    private async generalCorpusSearch(url: string): Promise<string[]> {
         const html: string[] | string = await this.getHtmlFromUrl(url);
         const $ = cheerio.load(html);
 
-        const divs = $(
-            'body > div.main.container > div:nth-child(4) > div.sptop1.col-lg-4.col-sm-12.col-md-12 > div > div.card-body.nopad.col-12'
-        )
+        return $('body > div.main.container > div:nth-child(4) > div.sptop1.col-lg-4.col-sm-12.col-md-12 > div > div.card-body.nopad.col-12')
             .text()
             .split(/\n/)
             .filter((sentence: string) => sentence.length > 0)
-            .slice(0, -2);
-        return divs;
+            .slice(0, -3);
     }
 }
