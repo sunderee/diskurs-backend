@@ -22,17 +22,17 @@ export class KontekstService {
         return this.scraper(finalUrl);
     }
 
-    async scrapeGeneralCorpusSlovenian(word: string): Promise<any> {
+    async scrapeGeneralCorpusSlovenian(word: string): Promise<string[]> {
         const finalUrl = this.constructEndpoint('slovenian', word);
         return this.generalCorpusSearch(finalUrl);
     }
 
-    async scrapeGeneralCorpusCroatian(word: string): Promise<any> {
+    async scrapeGeneralCorpusCroatian(word: string): Promise<string[]> {
         const finalUrl = this.constructEndpoint('croatian', word);
         return this.generalCorpusSearch(finalUrl);
     }
 
-    async scrapeGeneralCorpusSerbian(word: string): Promise<any> {
+    async scrapeGeneralCorpusSerbian(word: string): Promise<string[]> {
         const finalUrl = this.constructEndpoint('serbian', word);
         return this.generalCorpusSearch(finalUrl);
     }
