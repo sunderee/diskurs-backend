@@ -1,5 +1,7 @@
 # Diskurs Backend
 
+**DEPRECATED: this project was in use before developers of kontekst.io exposed their APIs to us**
+
 Backend application exposing RESTful API providing thesaurus of similar words and phrases in Slovenian, Croatian and
 Serbian language. Data is scraped from [kontekst.io](https://www.kontekst.io/). This is a TypeScript-based Node.js
 application using Nest.js framework.
